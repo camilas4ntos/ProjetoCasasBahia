@@ -22,4 +22,11 @@ public class IdentificacaoCbh {
 		return driver.findElement(By.id("lnkEsqueciSenha"));
 	
 }
+	public WebElement camposenha (WebDriver driver) {
+		return driver.findElement(By.id("Senha"));
+	
 }
+	
+	
+}
+

@@ -6,11 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 import Telas_cbh.IdentificacaoCbh;
 import Telas_cbh.CadastroCbh;
 import Telas_cbh.HomeCbh;
@@ -42,15 +40,15 @@ public class CtCdh {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws InterruptedException  {
 		
 		homecbh = new HomeCbh();
 		indentificacaocbh = new IdentificacaoCbh();
 		cadastrocbh = new CadastroCbh();
 		
 		
-		System.setProperty("webdriver.gecko.driver", "C:\\Users\\yamanadmin\\Documents\\DriveJar\\geckodriver.exe");
-		driver = new FirefoxDriver();
+		System.setProperty("webdriver.gecko.driver", "C:\\selenium\\geckodriver.exe");
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(2 , TimeUnit.SECONDS);
 		driver.get("https://www.casasbahia.com.br/");
@@ -58,21 +56,29 @@ public class CtCdh {
 		homecbh.menuCBH(driver).click();
 		indentificacaocbh.email(driver).sendKeys(email);
 		indentificacaocbh.radiobutton(driver).click();
-//		indentificacaocbh.botaocontinuar(driver).click();
-//		cadastrocbh.nomecompleto(driver).sendKeys(nomecompleto);
-//		cadastrocbh.cpf(driver).sendKeys(cpf);
-//		//cadastrocbh.tipotelefone1(driver).
-//		cadastrocbh.ddd(driver).sendKeys(ddd);
-//		cadastrocbh.telefone(driver).sendKeys(telefone);
-//		cadastrocbh.ddd2(driver).sendKeys(ddd);
-//		cadastrocbh.telefone2(driver).sendKeys(telefone2);
-//		cadastrocbh.dianasc(driver).sendKeys(dianasc);
-//		cadastrocbh.mesnasc(driver).sendKeys(mesnasc);
-//		cadastrocbh.anonasc(driver).sendKeys(anonasc);
-//		cadastrocbh.confirmaemail(driver).sendKeys(email);
-//		driver.findElement(By.id("Senha")).sendKeys("Senha@01");
-//		cadastrocbh.confirmasenha(driver).sendKeys(senha);
-//		cadastrocbh.salvar(driver).click();
+		indentificacaocbh.botaocontinuar(driver).click();
+		cadastrocbh.nomecompleto(driver).sendKeys(nomecompleto);
+		cadastrocbh.cpf(driver).sendKeys(cpf);
+		cadastrocbh.tipotelefone1(driver).sendKeys(telefone);
+		cadastrocbh.ddd(driver).sendKeys(ddd);
+		cadastrocbh.telefone(driver).sendKeys(telefone);
+		cadastrocbh.ddd2(driver).sendKeys(ddd);
+		cadastrocbh.telefone2(driver).sendKeys(telefone2);
+		cadastrocbh.dianasc(driver).sendKeys(dianasc);
+		cadastrocbh.mesnasc(driver).sendKeys(mesnasc);
+		cadastrocbh.anonasc(driver).sendKeys(anonasc);
+		cadastrocbh.confirmaemail(driver).sendKeys(email);
+		
+	
+		
+		driver.findElement(By.xpath("//fieldset[@class=\"fCadastro fCadastroLoja\"]/p[3]/input[@id=\"Senha\"]"))
+		.sendKeys("Senha@01");
+		
+		
+		
+		
+		cadastrocbh.confirmasenha(driver).sendKeys(senha);
+		cadastrocbh.salvar(driver).click();
 		
 		
 		
